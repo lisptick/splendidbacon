@@ -7,6 +7,9 @@ class Project < ActiveRecord::Base
             :on_hold => "On Hold",
             :completed => "Completed"}
 
+  cattr_accessor :STATES
+  @@STATES = STATES
+
   has_many :participations, :dependent => :destroy
   has_many :users, :through => :participations
 

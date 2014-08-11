@@ -11,6 +11,6 @@
       Everyone
     %ul.options
       %li.selected{:"data-value" => "all"} Everyone
-      - @organization.users.each do |user|
+      - @organization.users.select{|u| u.projects.any?}.each do |user|
         %li{:"data-value" => user.id}= user.name
    

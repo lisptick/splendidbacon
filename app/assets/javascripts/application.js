@@ -275,12 +275,6 @@ jQuery(function() {
     $("#onav").hide();
   });
 
-  $("#timeline .project").hover(function() {
-    $(this).css({ overflow: "visible" });
-  }, function() {
-    $(this).css({ overflow: "hidden" });
-  });
-  
   if ($.browser.webkit) {
       $('input').attr('autocomplete', 'off');
   }

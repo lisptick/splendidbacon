@@ -3,6 +3,7 @@ source "https://rubygems.org"
 gem "rails", "3.2.9"
 
 gem "devise", "~> 2.1.2"
+gem "net-ldap"
 gem "foreman", "~> 0.51.0"
 gem "haml", "~> 3.1.6"
 gem "haml-rails"

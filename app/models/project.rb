@@ -90,14 +90,6 @@ class Project < ActiveRecord::Base
     STATES[state]
   end
 
-  def active?
-    state == :ongoing
-  end
-
-  def completed?
-    state == :completed
-  end
-
   def as_json(opts={})
     opts = opts.is_a?(Hash) ? opts : {}
     opts[:include] = { :users => { :only => [:id, :email, :name] } }

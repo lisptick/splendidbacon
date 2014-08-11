@@ -58,13 +58,7 @@ module ProjectsHelper
   end
   
   def status_for_project(project)
-    if project.active?
-      content_tag :span, project.state_name, :class => "green"
-    elsif project.completed?
-      content_tag :span, project.state_name
-    else
-      content_tag :span, project.state_name, :class => "red"
-    end
+    content_tag :span, project.state_name, :class => project.state
   end
 
   def older_class(project)

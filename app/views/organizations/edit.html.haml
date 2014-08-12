@@ -4,6 +4,7 @@
 #leftcolumn.push_1.grid_15
   = simple_form_for(@organization) do |f|
     = f.input :name, :input_html => {:class => "flip"}, :required => false
+    = f.input :public
     = f.submit :class => "button"
 
   %hr/

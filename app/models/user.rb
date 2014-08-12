@@ -25,6 +25,8 @@ class User < ActiveRecord::Base
   scope :real, where("email NOT LIKE ?", "%@demoaccount.com")
   scope :demo, where("email LIKE ?", "%@demoaccount.com")
 
+  after_create :add_to_organizations
+
   def gravatar_url(size = 64)
     "https://secure.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.email)}?s=#{size.to_i}&d=#{CGI::escape("http://i.imgur.com/ASEqU.png")}"
   end
@@ -82,4 +84,15 @@ class User < ActiveRecord::Base
     Participation.create!(:user_id => self.id, :project_id => p.id)
     Status.create!(:text => "Get the tires out of garage", :link => nil, :source => "Comment", :user_id => self.id, :project_id => p.id)
   end
+
+  private
+    def add_to_organizations
+      if !self.demo?
+        organizations = Organization.where(:public =>  true)
+        organizations.each do |o|
+          Membership.create!(:organization_id => o.id, :user_id => self.id)
+        end
+      end
+    end
+
 end

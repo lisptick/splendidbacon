@@ -41,6 +41,8 @@ class Status < ActiveRecord::Base
 
   def send_notification_emails
     project = self.project
+    text = self.text
+    user = self.user
     emails = project.subscribers.map(&:email).delete_if { |e| e == self.user.email }
     organization = project.organization
     if emails.any?

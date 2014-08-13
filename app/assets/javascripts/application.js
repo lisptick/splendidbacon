@@ -39,12 +39,6 @@ function countdown(iso8601) {
 jQuery(function() {
 
   var organization = $("#organization_nav h1 a").text();
-  $("#organization_nav").hover(function() {
-    $(this).find("a:first").text("Edit");
-  }, function() {
-    $(this).find("a:first").text(organization);
-  });
-
   // Timeline
 
   var scroll = 448;

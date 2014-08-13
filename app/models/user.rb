@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
 
   scope :real, where("email NOT LIKE ?", "%@demoaccount.com")
   scope :demo, where("email LIKE ?", "%@demoaccount.com")
+  scope :admin, joins("inner join admins on admins.email=users.email")
 
   after_create :add_to_organizations
 
@@ -33,6 +34,10 @@ class User < ActiveRecord::Base
 
   def demo?
     !!self.email.match(/@demoaccount.com\z/i)
+  end
+
+  def admin?
+    User.admin.include? self
   end
 
   def create_demo_data

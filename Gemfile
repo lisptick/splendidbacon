@@ -16,6 +16,7 @@ gem "simple_form", "~> 1.2.2"
 gem "validates_timeliness", "~> 3.0.14"
 gem "yajl-ruby"
 gem "thin", "~> 1.5.0"
+gem "cancan"
 
 # Gems used only for assets and not required
 # in production environments by default.

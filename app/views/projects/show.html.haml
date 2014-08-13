@@ -1,9 +1,11 @@
 #top
   %span.push_1.project_label Project
   %h1.push_1.grid_20= @project.name
-  = link_to "Edit Project", edit_project_path(@project), :class => "button pictos edit right"
+  - if can? :update, @project
+    = link_to "Edit Project", edit_project_path(@project), :class => "button pictos edit right"
 #leftcolumn.push_1.grid_14
-  = render "update_form"
+  - if can? :edit, @project
+    = render "update_form"
   .clear
   #activity_title
     %h2 Activity

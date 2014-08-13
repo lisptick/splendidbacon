@@ -3,6 +3,20 @@ class Api::V1::ProjectsController < Api::BaseController
   
   respond_to :json
   
+  def create
+    organization = current_user.organizations.find(params[:organization_id])
+    project = Project.create(
+      :name => params[:name],
+      :organization => organization,
+      :user => current_user,
+      :start => params[:start],
+      :end => params[:end],
+      :state => :ongoing
+    )
+
+    respond_with(project)
+  end
+
   def index
     organization = current_user.organizations.find(params[:organization_id])
     @projects = organization.projects  

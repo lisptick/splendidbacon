@@ -45,7 +45,7 @@ class Status < ActiveRecord::Base
     organization = project.organization
     if emails.any?
       emails.each do |email|
-        NotificationMailer.new_comment(email, @project["project"]["name"], @project["project"]["id"].to_i, @organization["organization"]["name"], @organization["organization"]["id"].to_i, @status["status"]["text"], @status["status"]["source"], @author).deliver
+        NotificationMailer.new_comment(email, project.name, project.id.to_i, project.organization.name, project.organization.id.to_i, text, user.name).deliver
       end
     end
   end

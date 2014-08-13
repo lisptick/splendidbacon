@@ -13,6 +13,6 @@ class NotificationMailer < ActionMailer::Base
     
     mail( :to => email, 
           :subject => "[#{project_name}] New comment from #{comment_author}",
-          :from =>  "notifications+#{@organization_name.parameterize}@splendidbacon.com")
+          :from =>  "notifications+#{@organization_name.parameterize}@#{ENV['HOST']}")
   end
 end

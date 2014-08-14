@@ -18,6 +18,8 @@ SplendidBacon::Application.routes.draw do
     resources :memberships
   end
 
+  match "organizations/:id/feed" => "organizations#feed", :as => :organization_feed,  :defaults => { :format => 'rss' }
+  match "projects/:id/feed" => "projects#feed", :as => :project_feed,  :defaults => { :format => 'rss' }
   match "projects/:id/guest/:token" => "projects#guest", :as => :guest_project
 
   resources :projects do

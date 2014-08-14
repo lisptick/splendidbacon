@@ -1,1 +1,1 @@
-$("#notifications").html('<%= button_to "Unsubscribe from notifications", project_notification_path(@project, @notification), :remote => true, :method => :delete, :class => "button" %>');
+$("#notifications").html('<%= button_to "Unsubscribe from notifications", polymorphic_url([@context, @notification]) , :remote => true, :method => :delete, :class => "button" %>');

@@ -17,11 +17,12 @@ class Project < ActiveRecord::Base
 
   has_many :statuses, :dependent => :destroy
 
-  has_many :notifications, :dependent => :delete_all
+  has_many :notifications, :dependent => :delete_all, as: :notifiable
   has_many :subscribers, :source => :user, :through => :notifications
 
   before_create :generate_api_token
   after_create :create_initial_status
+  after_create :send_notification_emails
 
   validates_presence_of :start
   validates_presence_of :end
@@ -117,5 +118,17 @@ class Project < ActiveRecord::Base
 
   def create_initial_status
     self.statuses.create(:user => @user, :text => "Project created", :source => "Comment")
+  end
+
+  def send_notification_emails
+    project = self
+    organization = self.organization
+    user = self.user
+    emails = organization.subscribers.map(&:email).delete_if { |e| e == self.user.email }
+    if emails.any?
+      emails.each do |email|
+        NotificationMailer.new_project(email, project.name, project.description, project.id.to_i, project.organization.name, project.organization.id.to_i, user.name).deliver
+      end
+    end
   end
 end

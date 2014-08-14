@@ -16,6 +16,7 @@ SplendidBacon::Application.routes.draw do
     get :timeline, :on => :member
     get :completed, :on => :member
     resources :memberships
+    resources :notifications, :only => [ :create, :destroy ]
   end
 
   match "projects/:id/guest/:token" => "projects#guest", :as => :guest_project

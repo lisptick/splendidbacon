@@ -1,4 +1,13 @@
 #dashboard
+  #notifications
+    - if @notification.present?
+      = button_to "Unsubscribe from notifications", organization_notification_path(@organization, @notification), :remote => true, :method => :delete, :class => "button left"
+    - else
+      = button_to "Subscribe to notifications", organization_notifications_path(@organization), :remote => true, :method => :post, :class => "button left"
+    .clear
+
+
+
   = render "project_filters"
 
   .clearfix

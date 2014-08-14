@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %meta{ :charset => "UTF-8" }
+  %body
+    %ul
+      %li
+        %strong Project:
+        = link_to @project_name, @project_url
+      %li
+        %strong Organization:
+        = link_to @organization_name, @organization_url
+      %li
+        %strong Project URL:
+        = @project_url
+    %hr
+    %p
+      %strong= @creator
+      created the following project:
+    %p= @project_name
+    %p= @project_description
+    %hr
+    %p{ :style => "color: #ccc" } You can change your notification preferences on the organization page.

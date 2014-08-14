@@ -25,6 +25,7 @@ class OrganizationsController < ApplicationController
     title @organization.name
     navigation :dashboard
     no_background!
+    @notification = @organization.notifications.where(:user_id => current_user.id).first
     render :template => "projects/ghost" if @organization.projects.empty?
   end
 

@@ -4,7 +4,7 @@ class AddNotifiableToNotifications < ActiveRecord::Migration
       t.references :notifiable, :polymorphic => true
     end
 
-    add_index :notifications, [:user_id, :notifiable_id, :notifiable_type], :unique => true
+    add_index :notifications, [:user_id, :notifiable_id, :notifiable_type], :unique => true, :name => 'notifiables_index'
     add_index :notifications, [:notifiable_id, :notifiable_type]
 
     Notification.reset_column_information

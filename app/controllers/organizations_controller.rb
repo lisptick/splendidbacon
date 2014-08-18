@@ -71,7 +71,7 @@ class OrganizationsController < ApplicationController
   end
 
   def feed
-      @projects = @organization.projects.all(:order => 'created_at DESC', :limit => 50)
+      @projects = @organization.projects.where('state!="completed"').all(:order => 'id DESC', :limit => 50)
       respond_to do |format|
         format.rss { render :layout => false }
       end

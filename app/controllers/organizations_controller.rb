@@ -25,6 +25,11 @@ class OrganizationsController < ApplicationController
     title @organization.name
     navigation :dashboard
     no_background!
+    if  params[:search].present?
+      @projects = Project.search Riddle::Query.escape(params[:search]), :with => { :organization_id => @organization.id }, :match_mode => :boolean
+    else
+      @projects = @organization.projects.current
+    end
     render :template => "projects/ghost" if @organization.projects.empty?
   end
 

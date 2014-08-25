@@ -1,8 +1,14 @@
 #dashboard
+  - if Rails.application.config.allow_search
+    = form_tag organization_path, :class => "right", :method => :get do
+      = text_field_tag :search, params[:search]
+      = submit_tag "Search", name: nil
+  .clear
+
   = render "project_filters"
 
   .clearfix
-  - @organization.projects.current && @organization.projects.current.sort_by{|p| Project.STATES.keys.index(p.state) }.each_with_index do |project, index|
+  - @projects && @projects.sort_by{|p| Project.STATES.keys.index(p.state) }.each_with_index do |project, index|
     = render project
     - if (index + 1) % 2 == 0
       .clear

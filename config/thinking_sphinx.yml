@@ -1,0 +1,13 @@
+development:
+  min_infix_len: 1
+  enable_star: true
+test:
+  min_infix_len: 1
+  enable_star: true
+cucumber:
+  min_infix_len: 1
+  enable_star: true
+production:
+  min_infix_len: 1
+  enable_star: true
+

@@ -68,5 +68,9 @@ module SplendidBacon
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+   # Enable search (you must have thinking_sphinx and mysql installed and configured)
+   config.allow_search = false
+
   end
 end

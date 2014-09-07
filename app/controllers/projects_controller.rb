@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   respond_to :html
 
   before_filter :authenticate_user!, :except => [:guest]
-  before_filter :current_project, :only => [:show, :edit, :update, :destroy, :enable_guest_access, :disable_guest_access]
+  before_filter :current_project, :only => [:show, :edit, :update, :destroy, :enable_guest_access, :disable_guest_access, :feed]
   before_filter :current_organization, :only => [:new, :create]
 
   def show
@@ -64,6 +64,13 @@ class ProjectsController < ApplicationController
     @project.disable_guest_access
     flash[:notice] = "Guest access was disabled. Guest view can't be viewed anymore."
     respond_with @project
+  end
+
+  def feed
+      @statuses = @project.statuses.all(:order => 'id DESC', :limit => 50)
+      respond_to do |format|
+        format.rss { render :layout => false }
+      end
   end
 
   private

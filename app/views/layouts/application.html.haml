@@ -12,6 +12,10 @@
       %meta{:name => "broadcast-url", :content => user_broadcast_broadcast_reads_path(current_user, @broadcast) }
     = favicon_link_tag("/favicon.ico", :type => "image/png")
     = favicon_link_tag("app-icon.png", :rel => "apple-touch-icon-precomposed")
+    - if @organization and @organization.id
+      %link{ :href => organization_feed_url(@organization), :rel => "alternate", :type => "application/rss+xml", :title => "RSS feed" }
+    - if @projevt and @project.id
+      %link{ :href => project_feed_url(@project), :rel => "alternate", :type => "application/rss+xml", :title => "RSS feed" }
   %body
     - if in_demo?
       #demo_banner

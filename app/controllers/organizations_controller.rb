@@ -2,7 +2,7 @@ class OrganizationsController < ApplicationController
   respond_to :html
 
   before_filter :authenticate_user!
-  before_filter :current_organization, :only => [:timeline, :show, :completed, :edit, :update, :destroy]
+  before_filter :current_organization, :only => [:timeline, :show, :completed, :edit, :update, :destroy, :feed]
   
   def index
     title "Organizations"
@@ -79,6 +79,13 @@ class OrganizationsController < ApplicationController
     flash[:notice] = "Organization was successfully deleted."
     cookies.delete(:organization)
     redirect_to root_path
+  end
+
+  def feed
+      @projects = @organization.projects.where('state!="completed"').all(:order => 'id DESC', :limit => 50)
+      respond_to do |format|
+        format.rss { render :layout => false }
+      end
   end
   
   private

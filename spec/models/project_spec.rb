@@ -84,46 +84,4 @@ describe Project do
       @project.state_name.should == "Completed"
     end
   end
-
-  describe "#active?" do
-    before do
-      @project = Project.new
-    end
-
-    it "returns true if project is on going" do
-      @project.state = "ongoing"
-      @project.active?.should be_true
-    end
-
-    it "returns false if project is on hold" do
-      @project.state = "on_hold"
-      @project.active?.should be_false
-    end
-
-    it "returns false if project is completed" do
-      @project.state = "completed"
-      @project.active?.should be_false
-    end
-  end
-
-  describe "#completed?" do
-    before do
-      @project = Project.new
-    end
-
-    it "returns true if project is completed" do
-      @project.state = "completed"
-      @project.completed?.should be_true
-    end
-
-    it "returns false if project is on hold" do
-      @project.state = "on_hold"
-      @project.completed?.should be_false
-    end
-
-    it "returns false if project is ongoing" do
-      @project.state = "ongoing"
-      @project.completed?.should be_false
-    end
-  end
 end

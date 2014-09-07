@@ -28,6 +28,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    authorize! :create_project, current_user
     @project = @organization.projects.new(params[:project])
     @project.user = current_user
     flash[:notice] = "Project was successfully created." if @project.save
@@ -39,6 +40,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    authorize! :update, @project
     if @project.update_attributes(params[:project])
       flash[:notice] = "Project was successfully updated."
     end
@@ -46,6 +48,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, @project
     @project.destroy
     flash[:notice] = "Project was successfully deleted."
     redirect_to organization_path(@project.organization)

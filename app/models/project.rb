@@ -53,6 +53,10 @@ class Project < ActiveRecord::Base
     guest_token.present?
   end
 
+  def public?
+    self.organization.public?
+  end
+
   def authenticate_guest_access(token)
     guest_access? && guest_token == token
   end

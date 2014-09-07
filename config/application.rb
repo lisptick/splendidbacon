@@ -82,5 +82,6 @@ module SplendidBacon
       :last_name_key    => "sn",
       :email_key        => 'mail'
     }
+    config.user_can_create_organization = true
   end
 end

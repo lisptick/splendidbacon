@@ -6,7 +6,7 @@ class OrganizationsController < ApplicationController
   
   def index
     title "Organizations"
-    @organizations = current_user.organizations	
+    @organizations = current_user.organizations
   end
   
   
@@ -41,9 +41,17 @@ class OrganizationsController < ApplicationController
   end
   
   def create
+    authorize! :create_organization, current_user
     @organization = Organization.new(params[:organization])
     if @organization.save
       Membership.create!(:user_id => current_user.id, :organization_id => @organization.id)
+      #if the organization is public, all users should be a member
+      if @organization.public?
+        User.real.all.each do |user|
+          user.organizations.find_by_id(@organization.id) ||
+             Membership.create(:user_id => user.id, :organization_id => @organization.id)
+        end
+      end
       flash[:notice] = "Organization was successfully created."
       redirect_to edit_organization_path(@organization)
     else
@@ -58,6 +66,7 @@ class OrganizationsController < ApplicationController
   end
   
   def update
+    authorize! :update_organization, current_user
     if @organization.update_attributes(params[:organization])
       flash[:notice] = "Organization was successfully updated."
     end
@@ -65,6 +74,7 @@ class OrganizationsController < ApplicationController
   end
   
   def destroy
+    authorize! :destroy_organization, current_user
     @organization.destroy
     flash[:notice] = "Organization was successfully deleted."
     cookies.delete(:organization)

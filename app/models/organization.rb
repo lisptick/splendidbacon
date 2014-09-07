@@ -5,6 +5,8 @@ class Organization < ActiveRecord::Base
   has_many :memberships, :dependent => :destroy
   has_many :users, :through => :memberships
   has_many :invitations, :dependent => :destroy
+  has_many :notifications, :dependent => :destroy, as: :notifiable
+  has_many :subscribers, :source => :user, :through => :notifications
   validates_presence_of :name
   
   scope :real, where("name NOT LIKE ?", "Big Company").where("name NOT LIKE ?", "Freelancing")

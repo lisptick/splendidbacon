@@ -1,1 +1,1 @@
-$("#notifications").html('<%= button_to "Subscribe to notifications", project_notifications_path(@project), :remote => true, :method => :post, :class => "button" %>');
+$("#notifications").html('<%= button_to "Subscribe to notifications", polymorphic_path([@context, Notification]), :remote => true, :method => :post, :class => "button" %>');

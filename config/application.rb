@@ -68,5 +68,19 @@ module SplendidBacon
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # LDAP settings
+    config.allow_ldap_auth = false
+    config.ldap_auth_settings = {
+      :host             => 'domain.tld',
+      :port             => 389,
+      :base_dn          => 'ou=People,o=domain.tld',
+      :bind_dn          => nil,
+      :bind_password    => nil,
+      :identifier_key   => 'uid',
+      :first_name_key   => 'givenName',
+      :last_name_key    => "sn",
+      :email_key        => 'mail'
+    }
   end
 end

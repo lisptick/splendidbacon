@@ -6,7 +6,9 @@ Project URL: <%= @project_url %>
 <%= @comment_author %> made the following comment:
 
 <%= @comment %>
-
+<% if @comment_source and @comment_source != "Comment" %>
+Link: <%= @comment_source %>
+<% end %>
 
 
 ==

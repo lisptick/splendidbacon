@@ -7,7 +7,7 @@ class Status < ActiveRecord::Base
   validates_presence_of :source
   validates_uniqueness_of :text, :scope => [:project_id, :source, :link]
 
-  after_create :send_notification_emails, :if => proc { |s| s.source == "Comment" }
+  after_create :send_notification_emails
 
   paginates_per 10
 

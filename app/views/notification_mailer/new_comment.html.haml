@@ -18,5 +18,7 @@
       %strong= @comment_author
       made the following comment:
     %p= @comment
+    - if @comment_source and @comment_source != "Comment"
+      %p= "Link: #{@comment_source}"
     %hr
     %p{ :style => "color: #ccc" } You can change your notification preferences on the project page.

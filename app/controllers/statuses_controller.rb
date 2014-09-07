@@ -11,9 +11,13 @@ class StatusesController < ApplicationController
 
   def create
     @comment = @project.statuses.new(params[:status])
-    @comment.source = "Comment"
     @comment.user = current_user
-    @comment.link = nil
+    if @comment.link.present? and !@comment.source.present?
+      @comment.source = URI.parse(@comment.link).host
+    else
+      @comment.source = "Comment"
+      @comment.link = nil
+    end
 
     if @comment.save
       flash[:notice] = "Comment saved"

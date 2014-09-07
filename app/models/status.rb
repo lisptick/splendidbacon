@@ -37,6 +37,16 @@ class Status < ActiveRecord::Base
     end
   end
 
+  def self.create_from_api(project, user, params)
+    status = project.statuses.build( :text => params['body'],
+                                     :user => user,
+                                     :created_at => params["created_at"],
+                                     :link => params["link"],
+                                     :source => params['source'] )
+    status.save
+    status
+  end
+
   private
 
   def send_notification_emails

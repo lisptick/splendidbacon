@@ -47,8 +47,9 @@ SplendidBacon::Application.routes.draw do
 
       authenticate :user do
         resources :organizations, :only => [:index, :show] do
+          resources :projects, :only => [:create]
           resources :projects, :only => [:index, :show] do
-            resources :statuses, :only => [:index]
+            resources :statuses, :only => [:index, :create]
           end
           resources :users, :only => [:index]
         end

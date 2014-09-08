@@ -9,7 +9,7 @@ class PagesController < ApplicationController
       if organization_id = cookies[:organization]
         redirect_to organization_path(organization_id)
       else
-        if current_user.organizations.empty and can? :create_organization, current_user
+        if current_user.organizations.empty? and can? :create_organization, current_user
           redirect_to new_organization_path
         else
           redirect_to organization_path(current_user.organizations.first)

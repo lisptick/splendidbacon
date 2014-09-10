@@ -41,8 +41,8 @@
               = navigate_to :organization, "Edit", edit_organization_path(current_organization), :class => "logout"
               = navigate_to :dashboard, "Dashboard", organization_path(current_organization), :class => "button pictos dashboard"
               = navigate_to :timeline, "Timeline", timeline_organization_path(current_organization), :class => "button pictos time"
-            - if can? :create_project, current_user, current_organization
-              = link_to "New Project", new_project_path, :class => "button pictos new"
+              - if can? :create_project, current_user, current_organization
+                = link_to "New Project", new_project_path, :class => "button pictos new"
             = navigate_to :account, "Account", edit_user_registration_path, :class => "account"
             = link_to "Logout", destroy_user_session_path, :class => "logout", :method => :delete
           - else

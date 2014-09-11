@@ -4,10 +4,11 @@ class PagesController < ApplicationController
   before_filter :set_format
 
   def home
-    if user_signed_in?
-      flash.keep
-      if organization_id = cookies[:organization]
-        redirect_to organization_path(organization_id)
+    if organization_id = cookies[:organization]
+      redirect_to organization_path(organization_id)
+    elsif current_user
+      if current_user.organizations.empty?
+        redirect_to new_organization_path
       else
         if current_user.organizations.empty? and can? :create_organization, current_user
           redirect_to new_organization_path

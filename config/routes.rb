@@ -5,7 +5,11 @@ SplendidBacon::Application.routes.draw do
   devise_for :admins, :controllers => { :registrations => "magic/accounts" }, :path_names => { :sign_up => "new" }
 
   match "/magic" => "magic/pages#dashboard", :as => "admin_root_path"
-  root :to => "pages#home"
+  authenticated :user do
+    root :to => "pages#home", :as => :authenticated_root
+  end
+  root :to => redirect('/users/sign_in')
+
   match "/privacy" => "pages#privacy"
   match "/terms" => "pages#terms"
   match "/sign_out_and_up" => "users#sign_out_and_up", :as => :sign_out_and_up

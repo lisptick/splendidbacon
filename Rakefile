@@ -4,4 +4,5 @@
 
 require File.expand_path('../config/application', __FILE__)
 
+require 'thinking_sphinx'
 SplendidBacon::Application.load_tasks

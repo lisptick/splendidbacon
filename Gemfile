@@ -34,6 +34,11 @@ end
 
 group :production do
   gem "pg"
+  gem 'mysql2',          '0.3.12b5', :platform => :ruby
+  gem 'jdbc-mysql',      '5.1.28',   :platform => :jruby
+  gem 'thinking-sphinx', '~> 3.1.1'
+  gem 'yaml_db'
+
 end
 
 group :test, :development do

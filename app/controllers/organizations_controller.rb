@@ -26,6 +26,11 @@ class OrganizationsController < ApplicationController
     navigation :dashboard
     no_background!
     @notification = @organization.notifications.where(:user_id => current_user.id).first
+    if  params[:search].present?
+      @projects = Project.search Riddle::Query.escape(params[:search]), :with => { :organization_id => @organization.id }, :match_mode => :boolean
+    else
+      @projects = @organization.projects.current
+    end
     render :template => "projects/ghost" if @organization.projects.empty?
   end
 

@@ -83,5 +83,9 @@ module SplendidBacon
       :email_key        => 'mail'
     }
     config.user_can_create_organization = true
+
+   # Enable search (you must have thinking_sphinx and mysql installed and configured)
+   config.allow_search = false
+
   end
 end

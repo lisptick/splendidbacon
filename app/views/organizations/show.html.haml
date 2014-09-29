@@ -6,7 +6,11 @@
       = button_to "Subscribe to notifications", organization_notifications_path(@organization), :remote => true, :method => :post, :class => "button left"
     .clear
 
-
+  - if Rails.application.config.allow_search
+    = form_tag organization_path, :class => "right", :method => :get do
+      = text_field_tag :search, params[:search]
+      = submit_tag "Search", name: nil
+  .clear
 
   = render "project_filters"
 

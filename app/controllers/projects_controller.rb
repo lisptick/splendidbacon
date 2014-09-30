@@ -28,7 +28,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    authorize! :create_project, current_user
+    authorize! :create_project, current_user, @organization
     @project = @organization.projects.new(params[:project])
     @project.user = current_user
     flash[:notice] = "Project was successfully created." if @project.save

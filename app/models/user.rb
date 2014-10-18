@@ -3,12 +3,18 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :token_authenticatable
+         :token_authenticatable, :authentication_keys => [:login]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name
+  attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :name
 
-  validates_presence_of :name
+  attr_accessible :login
+
+  validates_presence_of :username
+  validates :username,
+    :uniqueness => {
+      :case_sensitive => false
+    }
 
   has_many :memberships, :dependent => :destroy
   has_many :organizations, :through => :memberships
@@ -24,6 +30,15 @@ class User < ActiveRecord::Base
 
   scope :real, where("email NOT LIKE ?", "%@demoaccount.com")
   scope :demo, where("email LIKE ?", "%@demoaccount.com")
+
+  def self.find_first_by_auth_conditions(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+    else
+      where(conditions).first
+    end
+  end
 
   def gravatar_url(size = 64)
     "https://secure.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.email)}?s=#{size.to_i}&d=#{CGI::escape("http://i.imgur.com/ASEqU.png")}"
@@ -45,7 +60,7 @@ class User < ActiveRecord::Base
     u = []
     users.each do |user|
       pass = SecureRandom.hex(8)
-      u += [User.create!(:name => user, :email => SecureRandom.hex(8) + "@demoaccount.com", :password => pass, :password_confirmation => pass)]
+      u += [User.create!(:name => user, :username =>user.downcase.gsub(/\s+/, "."), :email => SecureRandom.hex(8) + "@demoaccount.com", :password => pass, :password_confirmation => pass)]
       Membership.create!(:organization_id => o1.id, :user_id => u.last.id)
     end
 

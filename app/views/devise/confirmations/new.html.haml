@@ -1,5 +1,5 @@
 %h1 Resend confirmation instructions
 = simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
-  = f.input :email
+  = f.input :username
   = f.button :submit, "Resend confirmation instructions"
 = render :partial => "devise/shared/links"

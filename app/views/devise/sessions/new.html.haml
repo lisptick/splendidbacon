@@ -3,7 +3,7 @@
   %h1.push_1.grid_20 Sign in
 #leftcolumn.push_1.grid_10.clearfix
   = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-    = f.input :email, :input_html => {:class => "flip", :style => "width:350px"}, :required => false
+    = f.input :login, :input_html => {:class => "flip", :style => "width:350px"}, :required => false
     = f.input :password, :input_html => {:class => "flip", :style => "width:350px"}, :required => false
     - if devise_mapping.rememberable?
       = f.input :remember_me, :as => :boolean

@@ -63,6 +63,29 @@ Or:
 
     bundle exec rspec spec
 
+## Functional Tests
+
+A selenium server is required to run functionnal tests.
+[wdm](https://www.npmjs.org/package/wdm) can be used to install one locally,
+[saucelabs](https://saucelabs.com/) or
+[browserstack](http://www.browserstack.com/) provide this as a service.
+
+[NodeJS](http://nodejs.org/) and [npm](https://www.npmjs.org/) are also required.
+
+Install required packages:
+
+``` bash
+npm install
+```
+
+Then lauch tests
+
+``` bash
+npm test
+# OR
+screenstory spec/wd/index.js --extension spec/wd/extensions.js --screenshots spec/wd/screenshots -c firefox
+```
+
 ## License and Copyright
 
 Copyright © 2010-2012 Kisko Labs & contributors.

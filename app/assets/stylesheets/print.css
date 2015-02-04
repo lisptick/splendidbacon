@@ -4,6 +4,6 @@
 *= require 960_24_col
 *= require jquery-ui
 *= require jquery.jgrowl
-*= require print
+*= require application_print
 *= require magic
 */

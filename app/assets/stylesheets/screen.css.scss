@@ -1,6 +1,9 @@
 @import "font-awesome";
 @import "font-awesome-ie7";
 
+$on_hold-color: red;
+$ongoing-color: #87ea23;
+
 @mixin box-shadow($h, $v, $r, $c) {
   box-shadow: $h $v $r $c;
   -moz-box-shadow: $h $v $r $c;
@@ -44,6 +47,19 @@
 @mixin text-overflow($value) {
   text-overflow: $value;
   -o-text-overflow: $value;
+}
+
+@mixin timeline-project-gradient ($color: #16b4ce) {
+    $shade1: 0.45;
+    $shade2: 0.45;
+    background: $color;
+    background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 8%, rgba(0,0,0,$shade1) 96%, rgba(0,0,0,$shade2) 97%) $color; /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(8%,rgba(0,0,0,0)), color-stop(96%,rgba(0,0,0,$shade1)), color-stop(97%,rgba(0,0,0,$shade2))) $color; /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 8%,rgba(0,0,0,$shade1) 96%,rgba(0,0,0,$shade2) 97%) $color; /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 8%,rgba(0,0,0,$shade1) 96%,rgba(0,0,0,$shade2) 97%) $color; /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 8%,rgba(0,0,0,$shade1) 96%,rgba(0,0,0,$shade2) 97%) $color; /* IE10+ */
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 8%,rgba(0,0,0,$shade1) 96%,rgba(0,0,0,$shade2) 97%) $color; /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
 }
 
 html {
@@ -406,10 +422,30 @@ ul.options {
 
   .project {
     position: relative;
-    background: image-url("project-bg.png") repeat-x;
+    @include timeline-project-gradient();
+    border: 1px solid #0d7f94;
+    &.ongoing {
+        @include timeline-project-gradient($ongoing-color);
+        border: 1px solid darken($ongoing-color, 10%);
+    }
+    &.on_hold {
+        @include timeline-project-gradient($on_hold-color);
+        border: 1px solid darken($on_hold-color, 10%);
+    }
+    &.ops_ongoing {
+        @include timeline-project-gradient($ops_ongoing-color);
+        border: 1px solid darken($ops_ongoing-color, 10%);
+    }
+    &.next_prio {
+        @include timeline-project-gradient($next_prio-color);
+        border: 1px solid darken($next_prio-color, 10%);
+    }
+    &.maintenance {
+        @include timeline-project-gradient($maintenance-color);
+        border: 1px solid darken($maintenance-color, 10%);
+    }
     height: 62px;
     margin: 30px 0;
-    border: 1px solid #0d7f94;
     @include border-radius(5px);
     cursor: pointer;
     overflow: visible;
@@ -565,14 +601,26 @@ ul.sidebar_team li .avatar,
   @include inset-shadow(0, 3px, 5px, #000);
   border-bottom:1px solid #333436;
   color:#fff;
-}
 
-.ongoing {
-  color:#87ea23 !important;
-}
+  .ongoing {
+    color: $ongoing-color;
+  }
 
-.on_hold {
-  color:red !important;
+  .ops_ongoing {
+    color: $ops_ongoing-color;
+  }
+
+  .on_hold {
+    color: $on_hold-color;
+  }
+
+  .next_prio {
+    color: $next_prio-color;
+  }
+
+  .maintenance {
+    color: $maintenance-color;
+  }
 }
 
 .white {

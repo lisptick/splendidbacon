@@ -1,0 +1,22 @@
+{
+  "name": "splendidbacon",
+  "version": "1.0.0",
+  "description": "dev environment for spelndid beacon",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "screenstory spec/wd/index.js --extension spec/wd/extensions.js --screenshots spec/wd/screenshots"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.corp.gandi.net:lisptick/splendidbacon.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "screenstory": "^0.3.1",
+    "webdrivercss": "^0.3.0"
+  }
+}

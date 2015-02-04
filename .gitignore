@@ -19,3 +19,8 @@
 
 # ignore docker files
 docker/gems/
+
+# funcional tests related
+node_modules
+spec/wd/screenshots
+phantomjsdriver.log

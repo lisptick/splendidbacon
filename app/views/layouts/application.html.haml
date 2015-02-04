@@ -61,4 +61,3 @@
         %div{:class => "#{key} pictos flash"}= value
     .container_24{ :id => background? ? "content" : nil }
       = yield
-    = render :partial => "layouts/analytics" if Rails.env.production?

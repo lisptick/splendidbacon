@@ -87,6 +87,10 @@ textarea, input {
   @include border-radius(5px);
 }
 
+textarea {
+  height: 200px
+}
+
 #header {
   height: 80px;
   background: $main-background;

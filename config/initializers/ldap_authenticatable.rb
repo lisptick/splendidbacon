@@ -102,6 +102,11 @@ module Devise
           conn = Net::LDAP.new
           conn.host = conf[:host]
           conn.port = conf[:port]
+          
+          if conf[:encryption]
+            conn.encryption(conf[:encryption])
+          end
+
 
           if conf[:bind_dn] && conf[:bind_password]
                   conn.auth conf[:bind_dn], conf[:bind_password]

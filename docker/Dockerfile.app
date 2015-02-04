@@ -1,7 +1,7 @@
 FROM ubuntu
 
 RUN apt-get update -q
-RUN apt-get install -qy curl ruby1.9.3 ruby1.9.1-dev rake make build-essential g++ git mysql-server sqlite3 libxslt-dev libxml2-dev libsqlite3-dev nodejs nginx unicorn
+RUN apt-get install -qy curl ruby1.9.3 ruby1.9.1-dev rake make build-essential g++ git mysql-server sqlite3 libxslt-dev libxml2-dev libsqlite3-dev nodejs nginx unicorn postgresql-9.3 libpq-dev
 
 ##INSTALLING BUNDLER
 RUN /bin/bash -c -l 'gem install bundler --no-ri --no-rdoc'

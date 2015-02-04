@@ -18,18 +18,18 @@ $main-border-color: #303030;
 $main-shadow-color: #111;
 
 // Alternative color scheme
-//$alt-background: #fff; // to be defined
+//$alt-background: #222; // to be defined
 $alt-color: #999;
 $alt-shadow-color: #222;
 
 // Alternative color scheme
-$alt2-background: #000;
+$alt2-background: #222;
 $alt2-color: #fff;
 $alt2-hover-color: #328acf;
 $alt2-shadow-color: #333;
 
 // Alternative color scheme
-//$alt3-background: #fff; // to be defined
+$alt3-background: $main-background-color; // to be defined
 $alt3-color: #111;
 $alt3-shadow-color: #555;
 
@@ -39,3 +39,5 @@ $alt4-background: #1c1c1f;
 $alt4-color: #fff;
 $alt4-border-color: #303030;
 $alt4-shadow-color: #111;
+
+$timeline-background: image-url("timeline-bg.jpg") repeat;

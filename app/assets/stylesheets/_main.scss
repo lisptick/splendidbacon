@@ -195,10 +195,10 @@ textarea {
 .project_mate {
   margin-top:-5px;
   margin-right:1em;
-  background: $main-background-color;
+  background: $alt2-background;
   border-top:1px solid rgba(255, 255, 255, 0.1);
   border-bottom:1px solid rgba(0, 0, 0, 0.2);
-  color: #FFF;
+  color: $alt2-color;
   padding: 0.1em 20px 0 0.9em;
   outline: none;
   @include border-radius(4px);
@@ -303,10 +303,10 @@ ul.options {
   #months {
     height: 32px;
     border-bottom: 1px solid #515254;
-    background: $alt3-color;
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($main-shadow-color), to($alt-shadow-color));
+    background: $alt3-background;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($alt3-background), to($alt3-shadow-color));
     @include border-radius(5px);
-    @include inset-shadow(0, 3px, 10px, #000)
+    @include inset-shadow(0, 3px, 10px, $alt3-shadow-color)
   }
 }
 
@@ -316,7 +316,7 @@ ul.options {
 
 #months .month {
   position: relative;
-  color: #fff;
+  color: $alt3-color;
   font-weight: bold;
   padding-left: 10px;
   border-left: 1px solid #5d5d5e;
@@ -356,7 +356,7 @@ ul.options {
 
 #timeline {
   position: relative;
-  background: image-url("timeline-bg.jpg") repeat;
+  background: $timeline-background;
   width: 100%;
   overflow: hidden;
   min-height:400px;

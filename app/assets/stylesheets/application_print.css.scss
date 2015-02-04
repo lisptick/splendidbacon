@@ -1,2 +1,12 @@
 @import "_settings_print";
 @import "_main";
+
+// hide unwanted elements
+#header { display: none; }
+#late_projects {display: none;}
+#inner_timeline{
+    border: 1px solid $alt4-border-color;
+    #months, #timeline {
+        border-radius: 0;
+    }
+}

@@ -1,4 +1,4 @@
-@import "_settings"
+@import "_settings";
 
 // layout colors
 // fallback background, attached on html element
@@ -6,11 +6,11 @@ $main-html-background: #fff;
 
 // the main theme
 $main-background-color: #fff;
-$main-background: image-url("dark-bg.jpg") repeat;
+$main-background: #fff; // image-url("dark-bg.jpg") repeat;
 $main-color: #000;
 $main-hover-color: #328acf;
-$main-border-color: #303030;
-$main-shadow-color: #111;
+$main-border-color: $main-background-color;
+$main-shadow-color: $main-background-color;
 
 // Alternative color scheme
 //$alt-background: #fff; // to be defined
@@ -24,9 +24,9 @@ $alt2-hover-color: #328acf;
 $alt2-shadow-color: #333;
 
 // Alternative color scheme
-//$alt3-background: #fff; // to be defined
-$alt3-color: #eee;
-$alt3-shadow-color: #aaa;
+$alt3-background: #fff; // to be defined
+$alt3-color: #111;
+$alt3-shadow-color: $alt3-background;
 
 
 // used for inputs and forms
@@ -34,3 +34,5 @@ $alt4-background: #1c1c1f;
 $alt4-color: #fff;
 $alt4-border-color: #303030;
 $alt4-shadow-color: #111;
+
+$timeline-background: image-url("timeline-bg-print.jpg") repeat;

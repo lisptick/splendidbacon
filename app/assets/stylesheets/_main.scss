@@ -632,6 +632,10 @@ ul.sidebar_team li .avatar,
       padding:15px 20px;
       @include box-shadow(0, 1px, 1px, $main-shadow-color);
     }
+
+    a {
+      color:#328acf;
+    }
   }
 
   #more_statuses_link {
@@ -686,12 +690,16 @@ ul.sidebar_team li .avatar,
     }
 
     .text {
-      font-size:18px;
       display:block;
       color: $alt4-color;
       line-height:1.1;
       margin-bottom:6px;
       overflow: hidden;
+      white-space: pre-wrap;
+      white-space: -moz-pre-wrap;
+      white-space: -pre-wrap;
+      white-space: -o-pre-wrap;
+      word-wrap: break-word;
     }
   }
 }

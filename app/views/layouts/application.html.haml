@@ -38,7 +38,6 @@
             - if current_organization
               - if can? :update, current_user, current_organization
                 = navigate_to :organization, "Edit", edit_organization_path(current_organization), :class => "logout"
-              = navigate_to :organization, "Edit", edit_organization_path(current_organization), :class => "logout"
               = navigate_to :dashboard, "Dashboard", organization_path(current_organization), :class => "button pictos dashboard"
               = navigate_to :timeline, "Timeline", timeline_organization_path(current_organization), :class => "button pictos time"
               - if can? :create_project, current_user, current_organization

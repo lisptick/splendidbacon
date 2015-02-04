@@ -77,7 +77,7 @@ input.flip {
   text-transform:none;
 }
 
-textarea {
+textarea, input {
   border: 1px solid $alt4-border-color;
   background-color: $alt4-background;
   padding: 10px 15px;

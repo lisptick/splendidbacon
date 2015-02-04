@@ -1,5 +1,5 @@
 module ProjectsHelper
-  
+
   def width(project)
     if project.start < first_visible_day
       (project.end - first_visible_day + 1) * 8
@@ -42,7 +42,7 @@ module ProjectsHelper
         style << "margin-left: #{left}px;"
         first_month = false
       end
-      
+
       if (pixels + width) < total_pixels
         content << content_tag(:div, current_date.strftime("%B %Y"), :style => style, :class => "month")
       end
@@ -56,7 +56,7 @@ module ProjectsHelper
   def timeline_width(projects)
     (projects.map(&:end).max - first_visible_day).to_i * 8 / 870 * 870 + 870
   end
-  
+
   def status_for_project(project)
     content_tag :span, project.state_name, :class => project.state
   end
@@ -64,6 +64,12 @@ module ProjectsHelper
   def older_class(project)
     if project.start < first_visible_day
       "older"
+    end
+  end
+
+  def status_class(project)
+    if project.state
+      project.state
     end
   end
 

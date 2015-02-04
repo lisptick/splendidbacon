@@ -303,10 +303,10 @@ ul.options {
   #months {
     height: 32px;
     border-bottom: 1px solid #515254;
-    background: $alt3-background;
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($alt3-background), to($alt3-shadow-color));
+    background: $main-background;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($main-shadow-color), to($main-shadow-color));
     @include border-radius(5px);
-    @include inset-shadow(0, 3px, 10px, $alt3-shadow-color)
+    @include inset-shadow(0, 3px, 10px, $main-shadow-color)
   }
 }
 
@@ -316,7 +316,7 @@ ul.options {
 
 #months .month {
   position: relative;
-  color: $alt3-color;
+  color: $main-color;
   font-weight: bold;
   padding-left: 10px;
   border-left: 1px solid #5d5d5e;
@@ -356,6 +356,8 @@ ul.options {
 
 #timeline {
   position: relative;
+// hack to get chrome to print background colors
+  -webkit-print-color-adjust: exact;
   background: $timeline-background;
   width: 100%;
   overflow: hidden;
@@ -364,6 +366,8 @@ ul.options {
   border-bottom:1px solid #444;
 
   .project {
+    // hack to get chrome to print background colors
+    -webkit-print-color-adjust: exact;
     position: relative;
     @include timeline-project-gradient();
     border: 1px solid #0d7f94;
@@ -387,7 +391,8 @@ ul.options {
         @include timeline-project-gradient($maintenance-bgcolor);
         border: 1px solid darken($maintenance-bgcolor, 10%);
     }
-    height: 62px;
+    // remove height
+    //height: 62px;
     margin: 30px 0;
     @include border-radius(5px);
     cursor: pointer;
@@ -421,6 +426,16 @@ ul.options {
     padding:8px 15px 4px 15px;
     font-size:16px;
     font-weight:bold;
+    display: inline-block;
+  }
+
+  .project .date {
+      display: inline-block;
+      font-style: italic;
+      font-size:14px;
+  }
+  .project .team {
+    display: inline-block;
   }
 
   a:hover {

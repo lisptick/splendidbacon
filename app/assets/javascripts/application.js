@@ -182,6 +182,7 @@ jQuery(function() {
           }).fadeTo("fast", 0.1).addClass("dimmed");
         } else if(type == "project_status") {
           $(".filterable_project[data-state!=" + value + "]").fadeTo("fast", 0.1).addClass("dimmed");
+          $('html,body').animate({scrollTop: $($(".filterable_project[data-state=" + value + "]:first")).offset().top},'slow');
         }
       });
       timelineProjects.filter(function() { return !$(this).hasClass("dimmed")}).fadeTo("fast", 1.0);

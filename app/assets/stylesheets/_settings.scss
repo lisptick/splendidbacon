@@ -4,3 +4,38 @@ $ongoing-color: #87ea23;
 
 $on_hold-bgcolor: #BD7878;
 $ongoing-bgcolor: #73B151;
+
+// layout colors
+// fallback background, attached on html element
+$main-html-background: image-url("bg.jpg") repeat #222;
+
+// the main theme
+$main-background-color: #222;
+$main-background: image-url("dark-bg.jpg") repeat;
+$main-color: #fff;
+$main-hover-color: #328acf;
+$main-border-color: #303030;
+$main-shadow-color: #111;
+
+// Alternative color scheme
+//$alt-background: #fff; // to be defined
+$alt-color: #999;
+$alt-shadow-color: #222;
+
+// Alternative color scheme
+$alt2-background: #000;
+$alt2-color: #fff;
+$alt2-hover-color: #328acf;
+$alt2-shadow-color: #333;
+
+// Alternative color scheme
+//$alt3-background: #fff; // to be defined
+$alt3-color: #111;
+$alt3-shadow-color: #555;
+
+
+// used for inputs and forms
+$alt4-background: #1c1c1f;
+$alt4-color: #fff;
+$alt4-border-color: #303030;
+$alt4-shadow-color: #111;

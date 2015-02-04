@@ -1,1 +1,36 @@
 @import "_settings"
+
+// layout colors
+// fallback background, attached on html element
+$main-html-background: #fff;
+
+// the main theme
+$main-background-color: #fff;
+$main-background: image-url("dark-bg.jpg") repeat;
+$main-color: #000;
+$main-hover-color: #328acf;
+$main-border-color: #303030;
+$main-shadow-color: #111;
+
+// Alternative color scheme
+//$alt-background: #fff; // to be defined
+$alt-color: #999;
+$alt-shadow-color: #222;
+
+// Alternative color scheme
+$alt2-background: #fff;
+$alt2-color: #000;
+$alt2-hover-color: #328acf;
+$alt2-shadow-color: #333;
+
+// Alternative color scheme
+//$alt3-background: #fff; // to be defined
+$alt3-color: #eee;
+$alt3-shadow-color: #aaa;
+
+
+// used for inputs and forms
+$alt4-background: #1c1c1f;
+$alt4-color: #fff;
+$alt4-border-color: #303030;
+$alt4-shadow-color: #111;

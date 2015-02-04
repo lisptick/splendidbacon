@@ -3,8 +3,8 @@
 @import "font-awesome-ie7";
 
 html {
-  background: image-url("bg.jpg") repeat #222;
-  color: #fff;
+  background: $main-html-background;
+  color: $main-color;
   text-rendering: optimizeLegibility;
 }
 
@@ -19,7 +19,10 @@ h2, h3, h4, h5, h6 {
   margin:20px 0 0 0;
 }
 
-h1, h2 {text-shadow:0 2px 1px #111; font-weight:bold;}
+h1, h2 {
+    text-shadow: 0 2px 1px $main-shadow-color;
+    font-weight:bold;
+}
 
 h2 {
   font-size:18px;
@@ -31,7 +34,7 @@ a {
 }
 
 a:hover {
-  color:#328acf;
+  color: $main-hover-color;
 }
 
 label {
@@ -55,7 +58,7 @@ div.input {
 
   a {
     margin:20px 20px 0 0;
-    color:#999;
+    color:$alt-color;
   }
 }
 
@@ -75,21 +78,21 @@ input.flip {
 }
 
 textarea {
-  border: 1px solid #303030;
-  background-color: #1c1c1f;
+  border: 1px solid $alt4-border-color;
+  background-color: $alt4-background;
   padding: 10px 15px;
-  color: #fff;
+  color: $alt4-color;
   font-size:18px;
-  @include inset-shadow(0, 0, 5px, #111);
+  @include inset-shadow(0, 0, 5px, $alt4-shadow-color);
   @include border-radius(5px);
 }
 
 #header {
   height: 80px;
-  background: image-url("dark-bg.jpg") repeat;
-  border-bottom: 1px solid #303030;
+  background: $main-background;
+  border-bottom: 1px solid $main-border-color;
   margin-bottom: 40px;
-  @include box-shadow(0px, 1px, 7px, #111);
+  @include box-shadow(0px, 1px, 7px, $main-shadow-color);
 
   #logo img {
     position: relative;
@@ -108,16 +111,16 @@ textarea {
 
   .logout {
     font-weight:bold;
-    text-shadow:0 0 1px #111;
+    text-shadow: 0 0 1px $main-shadow-color;
   }
 }
 
 #content {
-  background: image-url("dark-bg.jpg") repeat;
-  border: 1px solid #303030;
+  background: $main-background;
+  border: 1px solid $main-border-color;
   padding:0 0 40px 0;
   @include border-radius(5px);
-  @include box-shadow(0px, 1px, 7px, #111);
+  @include box-shadow(0px, 1px, 7px, $main-shadow-color);
   margin-bottom: 20px;
 }
 
@@ -170,7 +173,7 @@ textarea {
 .project_label {
   text-transform: uppercase;
   font-size: 10px;
-  color: #999;
+  color: $alt-color;
   vertical-align: bottom;
   display: block;
 }
@@ -192,7 +195,7 @@ textarea {
 .project_mate {
   margin-top:-5px;
   margin-right:1em;
-  background: #222;
+  background: $main-background-color;
   border-top:1px solid rgba(255, 255, 255, 0.1);
   border-bottom:1px solid rgba(0, 0, 0, 0.2);
   color: #FFF;
@@ -229,9 +232,9 @@ textarea {
 
 ul.options {
   cursor: pointer;
-  background: black;
+  background: $alt2-background;
   padding:0.2em 0.8em;
-  @include box-shadow(0px, 1px, 2px, #000);
+  @include box-shadow(0px, 1px, 2px, $alt2-shadow-color);
 
   li {
     list-style: none;
@@ -240,7 +243,7 @@ ul.options {
   }
 
   li:hover {
-    color:#328acf;
+    color: $alt2-hover-color;
   }
 }
 
@@ -257,7 +260,7 @@ ul.options {
     padding:0.5em 1em;
     @include border-radius(2px);
     cursor:pointer;
-    color:#999;
+    color:$alt-color;
   }
 
   .selected, .project_status a:hover {
@@ -300,8 +303,8 @@ ul.options {
   #months {
     height: 32px;
     border-bottom: 1px solid #515254;
-    background:#111;
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#111), to(#222));
+    background: $alt3-color;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($main-shadow-color), to($alt-shadow-color));
     @include border-radius(5px);
     @include inset-shadow(0, 3px, 10px, #000)
   }
@@ -323,8 +326,8 @@ ul.options {
 }
 
 #late_projects {
-  background: #1c1c1f;
-  border: 1px solid #333;
+  background: $alt4-background;
+  border: 1px solid $alt4-border-color;
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -584,14 +587,14 @@ ul.sidebar_team li .avatar,
   font-size:16px;
   cursor:pointer;
   @include inset-shadow(0, 1px, 1px, #444);
-  text-shadow:0 0 1px #111;
+  text-shadow: 0 0 1px $main-shadow-color;
   -webkit-transition: text-shadow 0.30s linear;
 }
 
 .button:hover,
 .button.active {
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#222), to(#222));
-  @include inset-shadow(0, 1px, 6px, #111);
+  @include inset-shadow(0, 1px, 6px, $main-shadow-color);
   color:#fff;
   text-shadow:0 0px 6px #198ce5;
   -webkit-transition: text-shadow 0.20s linear;
@@ -612,7 +615,7 @@ ul.sidebar_team li .avatar,
       margin:0;
       border-bottom:1px solid #222;
       padding:15px 20px;
-      @include box-shadow(0, 1px, 1px, #111);
+      @include box-shadow(0, 1px, 1px, $main-shadow-color);
     }
   }
 
@@ -656,21 +659,21 @@ ul.sidebar_team li .avatar,
 
 
 #activity {
-  background:#1c1c1f;
-  border:1px solid #333;
+  background: $alt4-background;
+  border:1px solid $alt4-border-color;
   @include border-radius(4px);
 
   .activity {
     margin-left:60px;
 
     span {
-      color:#999;
+      color:$alt-color;
     }
 
     .text {
       font-size:18px;
       display:block;
-      color:#fff;
+      color: $alt4-color;
       line-height:1.1;
       margin-bottom:6px;
       overflow: hidden;
@@ -694,9 +697,9 @@ ul.sidebar_team li .avatar,
 
 #dashboard {
   .projectdash {
-    background:#222;
-    background: image-url("dark-bg.jpg") repeat;
-    border: 1px solid #303030;
+    background: $main-background-color;
+    background: $main-background;
+    border: 1px solid $main-border-color;
     margin-bottom:20px;
     margin-top:10px;
     @include border-radius(5px);
@@ -719,9 +722,9 @@ ul.sidebar_team li .avatar,
 
     p {
       margin:0;
-      text-shadow:0 1px 1px #222;
+      text-shadow: 0 1px 1px $alt-shadow-color;
       text-transform:uppercase;
-      color:#999;
+      color:$alt-color;
       font-size:13px;
     }
 
@@ -779,7 +782,7 @@ ul.sidebar_team li .avatar,
 .hr {
   margin:10px 0;
   border-top:1px solid #444;
-  @include box-shadow(0px, -1px, 0px, #111);
+  @include box-shadow(0px, -1px, 0px, $main-shadow-color);
 }
 
 .clearfix:after, .container_24:after {content:"\0020";display:block;height:0;clear:both;visibility:hidden;overflow:hidden;}
@@ -835,7 +838,7 @@ label[for='project_active'].toggle:hover,
     a {
       display: block;
       padding: 4px 2px;
-      text-shadow: 0 0px 1px #222;
+      text-shadow: 0 0px 1px $alt-shadow-color;
       font-weight: bold;
     }
   }
@@ -1010,7 +1013,7 @@ form.invitation input[type="email"] {
       bottom:18px;
       position:absolute;
       font-size:16px;
-      color:#999;
+      color:$alt-color;
       font-weight:normal;
     }
   }
@@ -1054,7 +1057,7 @@ form.invitation input[type="email"] {
   .benefit p {
     font-size:16px;
     margin-left:80px;
-    text-shadow:0 0 1px #333;
+    text-shadow: 0 0 1px $alt2-shadow-color;
     line-height:1.2;
   }
 
@@ -1126,7 +1129,7 @@ form.invitation input[type="email"] {
 
   #frontbuttons a {
     color:#fff;
-    text-shadow:0 0px 2px #333;
+    text-shadow: 0 0px 2px $alt2-shadow-color;
     font-weight:bold;
   }
 
@@ -1153,8 +1156,8 @@ form.invitation input[type="email"] {
 
   .pictos:before {
     font-size:72px;
-    color:#111;
-    text-shadow: 0 1px 1px #555;
+    color:$alt3-color;
+    text-shadow: 0 1px 1px $alt3-shadow-color;
   }
 }
 

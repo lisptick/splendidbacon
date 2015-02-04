@@ -1,0 +1,59 @@
+// Define some mixins
+
+@mixin box-shadow($h, $v, $r, $c) {
+  box-shadow: $h $v $r $c;
+  -moz-box-shadow: $h $v $r $c;
+  -webkit-box-shadow: $h $v $r $c;
+}
+
+@mixin inset-shadow($h, $v, $r, $c) {
+  -moz-box-shadow: inset $h $v $r $c;
+  -webkit-box-shadow: inset $h $v $r $c;
+  box-shadow: inset $h $v $r $c;
+}
+
+@mixin border-radius($radius) {
+  border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+}
+
+@mixin border-top-left-radius($radius) {
+  border-top-left-radius: $radius;
+  -webkit-border-top-left-radius: $radius;
+  -moz-border-radius-topleft: $radius;
+}
+
+@mixin border-top-right-radius($radius) {
+  border-top-right-radius: $radius;
+  -webkit-border-top-right-radius: $radius;
+  -moz-border-radius-topright: $radius;
+}
+
+@mixin d-border () {
+  border-bottom:1px solid #111;
+  @include box-shadow(0px, 1px, 0px, #444);
+}
+
+@mixin top-d-border () {
+  border-top:1px solid #111;
+  @include box-shadow(0px, -1px, 0px, #444);
+}
+
+@mixin text-overflow($value) {
+  text-overflow: $value;
+  -o-text-overflow: $value;
+}
+
+@mixin timeline-project-gradient ($color: #16b4ce) {
+    $shade1: 0.45;
+    $shade2: 0.45;
+    background: $color;
+    background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 8%, rgba(0,0,0,$shade1) 96%, rgba(0,0,0,$shade2) 97%) $color; /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(8%,rgba(0,0,0,0)), color-stop(96%,rgba(0,0,0,$shade1)), color-stop(97%,rgba(0,0,0,$shade2))) $color; /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 8%,rgba(0,0,0,$shade1) 96%,rgba(0,0,0,$shade2) 97%) $color; /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 8%,rgba(0,0,0,$shade1) 96%,rgba(0,0,0,$shade2) 97%) $color; /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 8%,rgba(0,0,0,$shade1) 96%,rgba(0,0,0,$shade2) 97%) $color; /* IE10+ */
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 8%,rgba(0,0,0,$shade1) 96%,rgba(0,0,0,$shade2) 97%) $color; /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+}

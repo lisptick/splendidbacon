@@ -62,6 +62,10 @@ jQuery(function() {
   };
   updateTimelineNavigation();
 
+  $("a.scrollup").click(function() {
+    $('html,body').animate({scrollTop: $($("#project_filters")).offset().top},'slow');
+  });
+
   $("a[href='#next']").click(function() {
     if (currentScroll < maxScroll) {
       $("#timeline .project, .month, #today_bar").animate({ left: "-=" + scroll + "px" });

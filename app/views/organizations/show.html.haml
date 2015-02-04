@@ -14,6 +14,8 @@
 
   = render "project_filters"
 
+  %a{:href =>'#', :class =>["scrollup", "icon-chevron-up"]}
+
   .clearfix
   - @organization.projects.current && @organization.projects.current.sort_by{|p| Project.STATES.keys.index(p.state) }.each_with_index do |project, index|
     = render project

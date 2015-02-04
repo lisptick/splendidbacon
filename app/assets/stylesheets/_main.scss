@@ -1247,3 +1247,12 @@ form.invitation input[type="email"] {
 #privacy h1 {
   text-align:left;
 }
+
+.scrollup {
+  position: fixed;
+  right: 20px;
+  bottom: 0px;
+  height: 32px;
+  text-decoration: none;
+  z-index: 100;
+}

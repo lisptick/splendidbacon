@@ -12,10 +12,10 @@ module Devise
           else
             return
           end
-          if !user
+          if user
             success!(user)
           else
-            fail(:invalid_login)
+            fail(:invalid)
           end
         end
       end
